@@ -39,6 +39,7 @@ namespace ElectricityDataStore.Controllers
                 HasHeaderRecord = false,
             };
 
+            //Process last four months' data
             var urlList = new List<string>()
             {
                 "https://data.gov.lt/dataset/1975/download/10766/2022-05.csv",

@@ -13,14 +13,13 @@ namespace ElectricitydataStore.Repository
             _context = context;
         }
 
-
         public async Task AddData(List<ElectrycityDataModel> data)
         {
+            //Store data into a database grouped by Tinklas (Regionas) field and apply aggregation:
+            // o Sum P + fields
+            //o Sum P - fields
 
-
-            var filterData = data.Where(e => e.Obt_Pavadinmas == "Butas");
-
-
+            var grouppedData = data.Where(e => e.Obt_Pavadinmas == "Butas");
 
 
 

@@ -4,6 +4,6 @@ namespace ElectricitydataStore.Repository
 {
     public interface IElectrycityDataStoreRepository
     {
-        Task AddData(List<ElectricityModel> data);
+        Task AddData(List<ElectrycityDataModel> data);
     }
 }

@@ -1,18 +1,19 @@
 using ElectricitydataStore.Context;
+using ElectricitydataStore.Mappings;
 using ElectricitydataStore.Repository;
 using Microsoft.EntityFrameworkCore;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddDbContext<DataContext>(opts =>
 {
-    opts.UseSqlServer(connectionString: "Server=(localdb)\\MSSQLLocalDB;Database=QuoteQuiz;MultipleActiveResultSets=True");
+    opts.UseSqlServer(connectionString: "Server=(localdb)\\MSSQLLocalDB;Database=CsvReader;MultipleActiveResultSets=True");
 });
 
 
 builder.Services.AddHttpClient();
+builder.Services.AddAutoMapper(typeof(ElectricityDataModelProfile));
 
 builder.Services.AddScoped<IElectrycityDataStoreRepository,ElectrycityDataStoreRepository>();
 

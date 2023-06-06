@@ -7,24 +7,29 @@ namespace ElectricitydataStore.Repository
     public class ElectrycityDataStoreRepository : IElectrycityDataStoreRepository
     {
         private readonly DataContext _context;
-        private readonly IMapper _mapper;
 
-        public ElectrycityDataStoreRepository(DataContext context, IMapper mapper)
+        public ElectrycityDataStoreRepository(DataContext context)
         {
             _context = context;
-            _mapper = mapper;
         }
 
 
-        public async Task AddData(List<ElectricityModel> data)
+        public async Task AddData(List<ElectrycityDataModel> data)
         {
 
-            foreach (var item in data)
-            {
-                await _context.AddAsync(item);
-            }
+
+            var filterData = data.Where(e => e.Obt_Pavadinmas == "Butas");
 
 
+
+
+
+
+            if (data is not null)
+                await _context.AddRangeAsync(data);
+
+
+            await _context.SaveChangesAsync();
         }
     }
 }

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ElectricitydataStore.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230606120746_initial")]
+    [Migration("20230606125510_initial")]
     partial class initial
     {
         /// <inheritdoc />

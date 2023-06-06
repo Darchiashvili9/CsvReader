@@ -30,8 +30,6 @@ namespace ElectricityDataStore.Controllers
             _mapper = mapper;
         }
 
-
-
         [HttpGet]
         public async Task GetData()
         {

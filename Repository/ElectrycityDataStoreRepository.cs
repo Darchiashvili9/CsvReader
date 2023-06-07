@@ -19,7 +19,9 @@ namespace ElectricitydataStore.Repository
             // o Sum P + fields
             //o Sum P - fields
 
-            var grouppedData = data.Where(e => e.Obt_Pavadinmas == "Butas");
+            var grouppedData = data.GroupBy(x => x.Tinklas).ToList();
+
+
 
 
 

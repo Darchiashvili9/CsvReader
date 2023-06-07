@@ -7,7 +7,7 @@ namespace ElectricitydataStore.Models
         [Key]
         public int Id { get; set; }
         public string Tinklas { get; set; } = null!;
-        public string Pplus { get; set; } = null!;
-        public string Pminus { get; set; } = null!;
+        public decimal? Pplus { get; set; }
+        public decimal? Pminus { get; set; }
     }
 }

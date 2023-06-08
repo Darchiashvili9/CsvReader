@@ -17,12 +17,8 @@ namespace ElectricitydataStore.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Tinklas = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Obt_Pavadinmas = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Obj_Gv_Tipas = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Obj_Numeris = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Pplus = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Pl_T = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Pminus = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Pplus = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Pminus = table.Column<decimal>(type: "decimal(18,2)", nullable: true)
                 },
                 constraints: table =>
                 {

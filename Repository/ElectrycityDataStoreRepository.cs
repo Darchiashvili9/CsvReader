@@ -16,28 +16,26 @@ namespace ElectricitydataStore.Repository
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Store data into a database grouped by Tinklas(Regionas) field and apply aggregation:
+        /// Sum P + fields
+        /// Sum P - fields
+        /// </summary>
         public async Task AddData(List<ElectrycityDataModel> data)
         {
+            var grouppedData = data.GroupBy(x => x.Tinklas).Select(x => new ElectrycityDataModel
+            {
+                Tinklas = x.Key,
+                Pplus = x.Sum(s => s.Pplus),
+                Pminus = x.Sum(_ => _.Pminus),
+            }).ToList();
 
 
 
 
 
-
-
-            //Store data into a database grouped by Tinklas (Regionas) field and apply aggregation:
-            // o Sum P + fields
-            //o Sum P - fields
-
-            var grouppedData = data.GroupBy(x => x.Tinklas).ToList();
-
-         //   var pPlus=grouppedData.Sum(e=>e.ppl)
-
-
-
-
-            if (data is not null)
-                await _context.AddRangeAsync(data);
+            if (grouppedData is not null)
+                await _context.AddRangeAsync(grouppedData);
 
 
             await _context.SaveChangesAsync();

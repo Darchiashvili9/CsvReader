@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<DataContext>(opts =>
 {
-    opts.UseSqlServer(connectionString: "Server=(localdb)\\MSSQLLocalDB;Database=CsvReader;MultipleActiveResultSets=True");
+    opts.UseSqlServer(connectionString: "Server=(localdb)\\MSSQLLocalDB;Database=CsvReaderV3;MultipleActiveResultSets=True");
 });
 
 

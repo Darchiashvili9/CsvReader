@@ -16,11 +16,8 @@ namespace ElectricitydataStore.Repository
             _mapper = mapper;
         }
 
-        public async Task AddData(List<ElectricityModel> data)
+        public async Task AddData(List<ElectrycityDataModel> data)
         {
-
-            var list = _mapper.Map<ElectrycityDataModel>(data);
-
 
 
 

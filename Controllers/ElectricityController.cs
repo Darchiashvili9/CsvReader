@@ -33,7 +33,7 @@ namespace ElectricityDataStore.Controllers
         [HttpGet]
         public async Task GetData()
         {
-            var edm = new List<ElectricityModel>();
+            var edm = new List<ElectrycityDataModel>();
             var config = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
                 HasHeaderRecord = false,
@@ -54,7 +54,7 @@ namespace ElectricityDataStore.Controllers
 
             await _repo.AddData(edm);
         }
-        private async Task<string> MakeRequest(string url, SemaphoreSlim semaphore, HttpClient httpClient, CsvConfiguration config, List<ElectricityModel> edm)
+        private async Task<string> MakeRequest(string url, SemaphoreSlim semaphore, HttpClient httpClient, CsvConfiguration config, List<ElectrycityDataModel> edm)
         {
             try
             {
@@ -66,10 +66,10 @@ namespace ElectricityDataStore.Controllers
                     var csvr = new CsvReader(reader, config);
 
                     //Filter only apartament (Butas) data 
-                    var responseValue = csvr.GetRecords<ElectricityModel>().ToList().Where(e => e.Obt_Pavadinmas == "Butas");
+                    var responseValue = csvr.GetRecords<ElectricityModel>().ToList().Where(e => e.Obt_Pavadinmas == "Butas" && e.Pplus.Length != 0 && e.Pminus.Length != 0);
 
-                //    var list = _mapper.Map<List<ElectrycityDataModel>>(responseValue);
-                    edm.AddRange(responseValue);
+                    var list = _mapper.Map<List<ElectrycityDataModel>>(responseValue);
+                    edm.AddRange(list);
                 }
 
                 return await response.Content.ReadAsStringAsync();
